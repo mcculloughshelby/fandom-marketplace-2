@@ -1,7 +1,7 @@
 "use client";
 import {useState, createState, Children} from "react";
 import { createContext } from "react";
-export const MyContext=createContext();
+export const AuthContext=createContext();
 export function Provider({children}){
     const [userRole,setUserRole]=useState(-1);
     function upDateRole(data){
@@ -9,8 +9,8 @@ export function Provider({children}){
     }
     const value1={userRole,upDateRole};
     return(
-        <MyContext.Provider value={value1}>
+        <AuthContext.Provider value={value1}>
             {children}
-        </MyContext.Provider>
+        </AuthContext.Provider>
     );
 }

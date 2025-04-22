@@ -1,7 +1,7 @@
 "use client"
 import {useState, useContext,useEffect} from "react";
 import { useRouter } from "next/navigation";
-import {MyContext} from "./MyContext";
+import {MyContext} from "./AuthContext";
 //***********Icon Imports***************** */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faCartShopping } from "@fortawesome/free-solid-svg-icons";
