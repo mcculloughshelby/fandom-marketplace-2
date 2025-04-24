@@ -22,5 +22,17 @@ export default function MessagePage() {
             })
 
             return (
-                <div className="max-w-2xl mx"
-            )
+                <div className="max-w-2xl mx-auto py-10">
+                    <h1 className="text-2xl font-bold mb-4">Your Messages!</h1>
+                    <ul className="space-y-4">
+                        {messages.map((message) => (
+                            <li key={message.id} className="p-4 border rounded bg-[#FAF3E0] shadow-md">
+                                <Link href={'messages/${message.id}'} className="text-[#3D405B] font-semibold">
+                                Message with <strong>{message.sender}</strong>:
+                                </Link>
+                                </li>
+                        ))}
+                    </ul>
+                </div>
+    )}
+)}
