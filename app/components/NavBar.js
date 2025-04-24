@@ -95,19 +95,33 @@ export default function NavBar() {
   )
 
   return (
-    <div className="grid grid-cols-6 md:grid-cols-7 bg-[#FFE9C6] text-[#3D405B] text-lg px-10 py-6 font-semibold gap-4 items-center">
+    <div className="grid grid-cols-6 md:grid-cols-10 bg-[#FFE9C6] text-[#3D405B] text-lg px-10 py-6 font-semibold gap-4 items-center">
       {navItems.map((item, idx) => (
         <a key={idx} href={item.href} className="flex items-center gap-1 hover:text-[#FF6B6B]">
           <FontAwesomeIcon icon={item.icon} />
           {item.name}
         </a>
       ))}
-      {(logStatus ===1 || logStatus === 2) && (
-        <a href="profile" className="flex items-center gap-1 hover:text-[#FF6B6B]">
+      {(logStatus === 1 || logStatus === 2) && (
+      <>
+        <a href="/otherprofiles" className="flex items-center gap-1 hover:text-[#FF6B6B]">
+          <FontAwesomeIcon icon={faUser} /> 
+          Other Profiles
+        </a>
+        <a href="/messages" className="flex items-center gap-1 hover:text-[#FF6B6B]">
+          <FontAwesomeIcon icon={faGavel} />
+          Messages
+        </a>
+        <a href="/create" className="flex items-center gap-1 hover:text-[#FF6B6B]">
+          <FontAwesomeIcon icon={faBomb} />
+          Create Listing
+        </a>
+        <a href="/profile" className="flex items-center gap-1 hover:text-[#FF6B6B]">
           <FontAwesomeIcon icon={faUser} /> 
           Profile
-          </a>
-      )}
+        </a>
+      </>
+    )}
 
       {logStatus === 2 && (
         <a 

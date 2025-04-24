@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+//import pool from '../lib/db'
 import axios from 'axios'
 
 export default function Cart(){
