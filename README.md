@@ -3,6 +3,15 @@
 A full-stack Consumer-to-Consumer (C2C) web app for buying and selling fandom merchandise, built with **Next.js (App Router)** and **Neon Postgres** database.
 
 ---
+## Login
+
+Currently - it is hard coded to accept one of two logins. 
+
+admin, test
+
+user1, test1
+
+---
 
 ## Features
 
