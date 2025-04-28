@@ -65,7 +65,11 @@ GEMINI_API_KEY="AIzaSyCme3Bngh2_o0rH2Xa_nwIRaR4NZGe9qDM"
 ## 4: Run the development server
 
 
+
+
 npm run dev
+
+
 http://localhost:3000 will pull it up
 
 ----
