@@ -20,7 +20,6 @@ A full-stack Consumer-to-Consumer (C2C) web app for buying and selling fandom me
 ## Tech Stack
 
 - **Frontend:** Next.js 14+, Tailwind CSS, FontAwesome icons
-- **Backend:** Node.js/Express.js (if using API endpoints)
 - **Database:** Neon (hosted PostgreSQL)
 - **Image Storage:** External image URLs (can be extended for file upload)
 - **Chatbot:** Google Gemini API (optional)
@@ -63,23 +62,48 @@ http://localhost:3000 will pull it up
 ----
 Project Structure
 
+
+
 /app                # Next.js app directory (pages, components)
+
+
 /app/admin          # Admin panel
+
+
 /app/cart           # Cart page
+
+
 /app/createlisting  # Create a listing
+
+
 /app/createprofile  # Create a user profile
+
+
 /app/otherprofiles  # View all user profiles
+
+
 /app/posts          # View all posts (listings)
+
+
 ...
 /lib/db.js          # Postgres pool config
+
+
 
 
 ----
 Database Schema
 
+
 users: id, username, email, passsword
+
+
 posts: id, title, price, descriptin, image_url, user_id
+
+
 cart: id, user_id, post_id
+
+
 
 
 ----
@@ -93,7 +117,12 @@ Customization
 Notes
 
 Admin Features are protected by user role - admin
+
+
 Cart and listing pages query Neon directly for the most up to date info.
+
+
+
 
 -----
 Credits
