@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Fan Trove — C2C Fandom Merch Marketplace
+
+A full-stack Consumer-to-Consumer (C2C) web app for buying and selling fandom merchandise, built with **Next.js (App Router)** and **Neon Postgres** database.
+
+---
+
+## Features
+
+- User authentication and profile creation
+- Buy/sell posts (listings) with images, prices, and descriptions
+- Shopping cart and checkout system
+- Admin panel for managing users and posts
+- View all user profiles
+- Themed for movie, TV, and pop culture fandoms
+- Built-in chatbot (Ryan Atwood sarcasm included)
+- Custom OC color palette (California vibes!)
+
+---
+
+## Tech Stack
+
+- **Frontend:** Next.js 14+, Tailwind CSS, FontAwesome icons
+- **Backend:** Node.js/Express.js (if using API endpoints)
+- **Database:** Neon (hosted PostgreSQL)
+- **Image Storage:** External image URLs (can be extended for file upload)
+- **Chatbot:** Google Gemini API (optional)
+
+---
 
 ## Getting Started
 
-First, run the development server:
+### 1. **Clone the Repository**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```sh
+git clone https://github.com/your-username/fan-trove.git
+cd fan-trove
+
 ```
+----
+## 2. Install dependencies 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+npm install
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+----
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 3. Set Up Environment Variables
 
-## Learn More
+create an .env file in the root directory with 
+DATABASE_URL="postgresql://neondb_owner:npg_OW6V9eJqQlLT@ep-hidden-voice-a4geuyqd-pooler.us-east-1.aws.neon.tech/neondb?sslmode=require"
+GEMINI_API_KEY="AIzaSyCme3Bngh2_o0rH2Xa_nwIRaR4NZGe9qDM"
 
-To learn more about Next.js, take a look at the following resources:
+----
+## 4: Run the development server
+npm run dev
+http://localhost:3000 will pull it up
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+----
+Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+/app                # Next.js app directory (pages, components)
+/app/admin          # Admin panel
+/app/cart           # Cart page
+/app/createlisting  # Create a listing
+/app/createprofile  # Create a user profile
+/app/otherprofiles  # View all user profiles
+/app/posts          # View all posts (listings)
+...
+/lib/db.js          # Postgres pool config
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+----
+Database Schema
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+users: id, username, email, passsword
+posts: id, title, price, descriptin, image_url, user_id
+cart: id, user_id, post_id
+
+
+----
+Customization 
+
+Colors/Themes: The O.C. inspired using Tailwind
+Fandom Icons: FontAwesome
+Image Hosting: Any image URLs - unless they're amazon. then it gets a little janky
+
+-----
+Notes
+
+Admin Features are protected by user role - admin
+Cart and listing pages query Neon directly for the most up to date info.
+
+-----
+Credits
+Coded by Shelby Marie McCullough
+For CIS 498 - Dr. Farha Ali
+Special thanks to the shows that i watched while coding this project.
+
+
