@@ -49,6 +49,8 @@ create an .env file in the root directory with
 
 
 DATABASE_URL="postgresql://neondb_owner:npg_OW6V9eJqQlLT@ep-hidden-voice-a4geuyqd-pooler.us-east-1.aws.neon.tech/neondb?sslmode=require"
+
+
 GEMINI_API_KEY="AIzaSyCme3Bngh2_o0rH2Xa_nwIRaR4NZGe9qDM"
 
 ----
