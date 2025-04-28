@@ -1,51 +1,117 @@
-'use client'
-import { useState } from 'react'
-import axios from 'axios'
+// import pool from "../lib/db";
+// import { redirect } from "next/navigation";
 
-export default function CreateListing() {
-  const [title, setTitle] = useState('')
-  const [price, setPrice] = useState('')
-  const [imageUrl, setImageUrl] = useState('')
+// export const dynamic = "force-dynamic";
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    const user_id = 1 // Replace with logged-in user logic
-    await axios.post('/api/posts', { title, price, image_url: imageUrl, user_id })
-    alert('Listing created!')
-    setTitle('')
-    setPrice('')
-    setImageUrl('')
+// export default function CreateListingPage() {
+//   async function createListing(formData) {
+//     "use server";
+//     const title = formData.get("title");
+//     const price = formData.get("price");
+//     const description = formData.get("description");
+//     const image_url = formData.get("image_url");
+
+//     await pool.query(
+//       "INSERT INTO posts (title, price, description, image_url) VALUES ($1, $2, $3, $4)",
+//       [title, price, description, image_url]
+//     );
+//     redirect("/listings");
+//   }
+
+//   return (
+//     <div className="max-w-xl mx-auto py-10">
+//       <h1 className="text-2xl font-bold mb-6 text-[#26547C]">Create a New Listing</h1>
+//       <form action={createListing} className="flex flex-col gap-4 bg-[#FFF] p-6 rounded shadow">
+//         <label className="font-semibold text-[#3b49c7]">Title</label>
+//         <input name="title" required className="border p-2 rounded" />
+
+//         <label className="font-semibold text-[#3b49c7]">Price</label>
+//         <input name="price" type="number" step="0.01" required className="border p-2 rounded" />
+
+//         <label className="font-semibold text-[#3b49c7]">Description</label>
+//         <textarea name="description" required className="border p-2 rounded" />
+
+//         <label className="font-semibold text-[#3b49c7]">Image URL</label>
+//         <input name="image_url" className="border p-2 rounded" />
+
+        
+
+//         <button
+//           type="submit"
+//           className="mt-4 bg-[#FF6B6B] text-white px-4 py-2 rounded hover:bg-[#26547C]"
+//         >
+//           Create Listing
+//         </button>
+//       </form>
+//     </div>
+//   );
+// }
+
+
+import pool from "../lib/db";
+import { redirect } from "next/navigation";
+
+export const dynamic = "force-dynamic";
+
+export default function CreateListingPage() {
+  async function createListing(formData) {
+    "use server";
+    const title = formData.get("title");
+    const price = formData.get("price");
+    const description = formData.get("description");
+    const image_url = formData.get("image_url");
+
+    await pool.query(
+      "INSERT INTO posts (title, price, description, image_url) VALUES ($1, $2, $3, $4)",
+      [title, price, description, image_url]
+    );
+    redirect("/listings");
   }
 
   return (
     <div className="max-w-xl mx-auto py-10">
-      <h2 className="text-2xl font-semibold text-[#26547C] mb-4">Create a New Listing</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <h1 className="text-2xl font-bold mb-6 text-[#26547C]">Create a New Listing</h1>
+      <form action={createListing} className="flex flex-col gap-4 bg-[#FFF] p-6 rounded shadow">
+        <label className="font-semibold text-[#26547C]">Title</label>
         <input
-          className="w-full border px-3 py-2 rounded"
-          placeholder="Item Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          name="title"
           required
+          className="border p-2 rounded text-[#26547C] placeholder-[#8D99AE]"
+          placeholder="Listing title"
         />
+
+        <label className="font-semibold text-[#26547C]">Price</label>
         <input
-          className="w-full border px-3 py-2 rounded"
-          placeholder="Price"
+          name="price"
           type="number"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
+          step="0.01"
           required
+          className="border p-2 rounded text-[#26547C] placeholder-[#8D99AE]"
+          placeholder="0.00"
         />
+
+        <label className="font-semibold text-[#26547C]">Description</label>
+        <textarea
+          name="description"
+          required
+          className="border p-2 rounded text-[#26547C] placeholder-[#8D99AE]"
+          placeholder="Describe your item..."
+        />
+
+        <label className="font-semibold text-[#26547C]">Image URL</label>
         <input
-          className="w-full border px-3 py-2 rounded"
-          placeholder="Image URL"
-          value={imageUrl}
-          onChange={(e) => setImageUrl(e.target.value)}
+          name="image_url"
+          className="border p-2 rounded text-[#26547C] placeholder-[#8D99AE]"
+          placeholder="https://..."
         />
-        <button type="submit" className="bg-[#FF6B6B] text-white px-4 py-2 rounded hover:bg-[#EF476F]">
-          Post Listing
+
+        <button
+          type="submit"
+          className="mt-4 bg-[#FF6B6B] text-white px-4 py-2 rounded hover:bg-[#26547C]"
+        >
+          Create Listing
         </button>
       </form>
     </div>
-  )
+  );
 }

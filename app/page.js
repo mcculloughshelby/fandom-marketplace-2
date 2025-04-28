@@ -14,7 +14,7 @@ export default function Home() {
       </p>
       <div className="mt-6 flex justify-center gap-4">
         <Link href="/listings" className="bg-[#FF6B6B] text-white px-4 py-2 rounded hover:bg-[#EF476F]">Browse Listings</Link>
-        <Link href="/create" className="bg-[#A9D6E5] text-[#212121] px-4 py-2 rounded hover:bg-[#90C8AC]">Sell Something</Link>
+        <Link href="/createlisting" className="bg-[#A9D6E5] text-[#212121] px-4 py-2 rounded hover:bg-[#90C8AC]">Sell Something</Link>
       </div>
     </main>
   )

@@ -1,35 +1,38 @@
-// app/profile/[id]/page.js
 import pool from "../lib/db";
 
-export default async function ProfilePage({ params }) {
-  const userId = params.id;
+export const dynamic = "force-dynamic";
 
-  // Query user from the database
-  const { rows } = await pool.query(
-    "SELECT id, username, email FROM users WHERE id = $1",
-    [userId]
+export default async function OtherProfilesPage() {
+  // Pull all users from the DB
+  const { rows: users } = await pool.query(
+    "SELECT id, username, email FROM users ORDER BY id ASC"
   );
-  const user = rows[0];
-
-  if (!user) {
-    return (
-      <div className="max-w-xl mx-auto py-10 text-center text-[#FF6B6B]">
-            This user was unable to be found. Please try again. If you are the user, please make sure you are logged in and have a profile created.
-      </div>
-    );
-  }
 
   return (
-    <div className="max-w-xl mx-auto py-10 text-center">
-      <h1 className="text-3xl font-bold text-[#26547C] mb-2">
-        {user.username}
-      </h1>
-      <p className="text-[#3D405B] mb-4">{user.email}</p>
-      <div className="bg-[#FAF3E0] py-6 px-4 rounded-lg shadow text-[#3D405B]">
-        <span className="text-xs text-[#8D99AE]">
-          User ID: {user.id}
-        </span>
-      </div>
+    <div className="max-w-3xl mx-auto py-10">
+      <h1 className="text-3xl font-bold mb-6 text-[#26547C]">All User Profiles</h1>
+      {users.length === 0 ? (
+        <div className="text-[#3D405B]">No users found. Please try again later!</div>
+      ) : (
+        <table className="w-full border shadow bg-white">
+          <thead className="bg-[#FFE9C6] text-[#26547C]">
+            <tr>
+              <th className="py-2 px-2 text-left">ID</th>
+              <th className="py-2 px-2 text-left">Username</th>
+              <th className="py-2 px-2 text-left">Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users.map(user => (
+              <tr key={user.id} className="border-b bg-white">
+                <td className="py-1 px-2 text-[#3D405B]">{user.id}</td>
+                <td className="py-1 px-2 text-[#26547C] font-semibold">{user.username}</td>
+                <td className="py-1 px-2 text-[#8D99AE]">{user.email}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 }

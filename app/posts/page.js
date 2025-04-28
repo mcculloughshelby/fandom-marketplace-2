@@ -15,14 +15,21 @@ export default async function PostsPage() {
           <div className="col-span-full text-center text-[#3D405B]">No posts found.</div>
         )}
         {posts.map((post) => (
-          <div key={post.id} className="border rounded p-4 bg-[#FAF3E0] shadow-md">
+          <div key={post.id} className="border rounded p-4 bg-white shadow-md">
             {post.image_url && (
-              <img src={post.image_url} alt={post.title} className="w-full h-40 object-cover mb-3 rounded" />
+              <img
+                src={post.image_url}
+                alt={post.title}
+                className="w-full h-40 object-cover mb-3 rounded"
+              />
             )}
-            <h2 className="text-xl font-bold">{post.title}</h2>
+            <h2 className="text-xl font-bold text-[#3D405B]">{post.title}</h2>
             <p className="text-[#3D405B]">${Number(post.price).toFixed(2)}</p>
             <p className="text-sm text-[#8D99AE] mb-2">{post.description}</p>
-            <a href={`/posts/${post.id}`} className="mt-2 inline-block bg-[#FF6B6B] text-white px-3 py-1 rounded hover:bg-[#EF476F]">
+            <a
+              href={`/posts/${post.id}`}
+              className="mt-2 inline-block bg-[#FF6B6B] text-white px-3 py-1 rounded hover:bg-[#26547C] transition"
+            >
               View Details
             </a>
           </div>

@@ -1,11 +1,11 @@
 "use server";
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 import dotenv from "dotenv";
-import { info,careers } from "./info";
+import { info,tone } from "./info";
 dotenv.config(); // Load environment variables
 // Access your API key as an environment variable 
 // We will access it just like we accessed DATABASE_URL
-const genAI = new GoogleGenerativeAI(process.env.API_KEY);
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 
 export default async function GetResponse(message) {
@@ -27,10 +27,9 @@ export default async function GetResponse(message) {
     systemInstruction: {
         parts: [
           {
-            "text": info
-          },
-          //{"text":careers},
-          {"text":tone}
+            "text": info}, 
+            {"text":tone}
+          
         ]
       }
 

@@ -20,6 +20,7 @@ export default function AboutPage() {
           <li>Make fandom collecting feel fun, safe, and community-driven</li>
           <li>Bridge the gap between nostalgia and commerce with style</li>
           <li>Never allow merch with Comic Sans on it</li>
+          <li>Also. The author of this site does not support J.K Rowling. The Harry Potter stuff was just on a list of fandoms.</li>
         </ul>
   
         <h2 className="text-2xl font-semibold text-[#26547C] mt-10 mb-2">Meet RyanBot</h2>
